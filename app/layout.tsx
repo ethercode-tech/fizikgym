@@ -1,18 +1,19 @@
-﻿import type { Metadata } from "next";
-import { Bebas_Neue, Manrope } from "next/font/google";
+import type { Metadata } from "next";
+import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/Analytics";
 import { InteractionTracker } from "@/components/InteractionTracker";
 
-const headingFont = Bebas_Neue({
+const headingFont = Oswald({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: "400"
+  weight: ["600", "700"]
 });
 
-const bodyFont = Manrope({
+const bodyFont = Inter({
   variable: "--font-body",
-  subsets: ["latin"]
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"]
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { FaqItem } from "@/lib/types";
@@ -27,7 +27,8 @@ export function FaqAccordion({ faq }: FaqAccordionProps) {
                     aria-controls={`panel-${item.id}`}
                     onClick={() => setOpenId(isOpen ? null : item.id)}
                   >
-                    {item.question}
+                    <span>{item.question}</span>
+                    <span className="faq-indicator" aria-hidden="true">{isOpen ? "-" : "+"}</span>
                   </button>
                 </h3>
                 <div id={`panel-${item.id}`} hidden={!isOpen}>

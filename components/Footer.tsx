@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { LandingPayload } from "@/lib/types";
 
 type FooterProps = {
@@ -15,14 +15,14 @@ export function Footer({ gym }: FooterProps) {
           <p>{gym.address.city}, {gym.address.province}</p>
         </div>
         <div>
-          <p>Redes</p>
+          <p className="footer-title">Redes</p>
           <ul>
             <li><a href={gym.social.instagram} target="_blank" rel="noreferrer">Instagram</a></li>
             <li><a href={gym.social.facebook} target="_blank" rel="noreferrer">Facebook</a></li>
           </ul>
         </div>
         <div>
-          <p>Legal</p>
+          <p className="footer-title">Legal</p>
           <ul>
             <li><Link href="/privacidad">Privacidad</Link></li>
             <li><Link href="/gracias">Gracias</Link></li>

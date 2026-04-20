@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { FormEvent, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
@@ -60,10 +60,10 @@ export function ContactForm({ enabled }: ContactFormProps) {
   }
 
   return (
-    <section className="contact" aria-labelledby="contact-title">
+    <section id="contacto" className="contact" aria-labelledby="contact-title">
       <div className="container">
         <h2 id="contact-title">Consulta rapida</h2>
-        <form className="contact-form" onSubmit={onSubmit} noValidate>
+        <form className="contact-form card" onSubmit={onSubmit} noValidate>
           <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hp-field" aria-hidden="true" />
           <label htmlFor="name">Nombre</label>
           <input id="name" name="name" required minLength={2} maxLength={100} />

@@ -1,4 +1,4 @@
-﻿import { ScheduleItem } from "@/lib/types";
+import { ScheduleItem } from "@/lib/types";
 
 type ScheduleTableProps = {
   schedules: ScheduleItem[];
@@ -20,7 +20,7 @@ export function ScheduleTable({ schedules }: ScheduleTableProps) {
             </thead>
             <tbody>
               {schedules.map((item) => (
-                <tr key={item.weekday}>
+                <tr key={item.weekday} className={item.isClosed ? "is-closed" : undefined}>
                   <td>{item.weekday}</td>
                   <td>{item.ranges.join(" / ")}</td>
                   <td>{item.note ?? (item.isClosed ? "Cerrado" : "-")}</td>
