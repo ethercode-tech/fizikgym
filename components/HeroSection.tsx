@@ -28,11 +28,17 @@ export function HeroSection({ data }: HeroSectionProps) {
         />
       </div>
       <div className="hero-overlay" aria-hidden="true" />
+      <div className="hero-glow" aria-hidden="true" />
+      <div className="hero-noise" aria-hidden="true" />
+
       <div className="container hero-content">
         <div className="hero-inner">
           <p className="eyebrow">Gimnasio en {data.gym.address.neighborhood}</p>
-          <h1 id="hero-title">{data.gym.tagline}</h1>
-          <p className="hero-copy">{data.gym.description}</p>
+          <h1 id="hero-title">
+            Entrena con mas
+            <span>energia y constancia</span>
+          </h1>
+          <p className="hero-copy">Musculacion, fuerza, cardio y horarios amplios para sostener tu rutina.</p>
           <div className="hero-cta-row">
             <a className="btn btn-primary" href={ctaLink} target="_blank" rel="noreferrer" data-track-event="whatsapp_click">
               Clase gratis
@@ -49,7 +55,34 @@ export function HeroSection({ data }: HeroSectionProps) {
             <li>{getFirstOpenRange(data)}</li>
             <li>Clase de prueba</li>
           </ul>
+          <div className="hero-stats" aria-label="Metricas destacadas">
+            <div>
+              <strong>+300</strong>
+              <span>Alumnos</span>
+            </div>
+            <div>
+              <strong>+5</strong>
+              <span>Anios</span>
+            </div>
+            <div>
+              <strong>14hs</strong>
+              <span>Abierto</span>
+            </div>
+          </div>
         </div>
+        <div className="hero-visual-side" aria-hidden="true">
+          <div className="floating-card top-card">
+            <span>Clase gratis</span>
+            <strong>Disponible hoy</strong>
+          </div>
+          <div className="floating-card bottom-card">
+            <span>Horario extendido</span>
+            <strong>{getFirstOpenRange(data)}</strong>
+          </div>
+        </div>
+      </div>
+      <div className="scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
       </div>
     </section>
   );

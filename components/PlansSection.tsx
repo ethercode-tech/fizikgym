@@ -1,10 +1,22 @@
-import { PlanItem } from "@/lib/types";
+﻿import { PlanItem } from "@/lib/types";
 import { buildWhatsappLink } from "@/lib/whatsapp";
 
 type PlansSectionProps = {
   plans: PlanItem[];
   whatsappNumber: string;
 };
+
+function getPlanBenefits(planId: string): string[] {
+  if (planId === "plan-inicio") {
+    return ["Acceso completo", "Horarios flexibles", "Seguimiento inicial"];
+  }
+
+  if (planId === "plan-estudiante") {
+    return ["Acceso completo", "Franja estudiante", "Promociones activas"];
+  }
+
+  return ["Acceso completo", "Turnos manana y tarde", "Asistencia del equipo"];
+}
 
 export function PlansSection({ plans, whatsappNumber }: PlansSectionProps) {
   return (
@@ -14,15 +26,24 @@ export function PlansSection({ plans, whatsappNumber }: PlansSectionProps) {
         <div className="plans-grid">
           {plans.map((plan) => {
             const isFeatured = plan.id === "plan-inicio";
+            const benefits = getPlanBenefits(plan.id);
 
             return (
               <article key={plan.id} className={`card plan-card${isFeatured ? " is-featured" : ""}`}>
-                {isFeatured && <p className="plan-badge">Recomendado</p>}
+                {isFeatured && <span className="plan-highlight">Mas elegido</span>}
                 <h3>{plan.name}</h3>
                 <p>{plan.description}</p>
-                <p className="price-label">{plan.priceLabel}</p>
+                <ul className="plan-benefits">
+                  {benefits.map((benefit) => (
+                    <li key={benefit}>{benefit}</li>
+                  ))}
+                </ul>
+                <div className="plan-price-wrap">
+                  <span>Desde</span>
+                  <strong>{plan.priceLabel ?? "Consultar valor"}</strong>
+                </div>
                 <a
-                  className={isFeatured ? "btn btn-primary" : "btn btn-secondary"}
+                  className="btn btn-primary"
                   href={buildWhatsappLink(whatsappNumber, `${plan.ctaLabel} en Fizik Gym`)}
                   target="_blank"
                   rel="noreferrer"
@@ -38,3 +59,4 @@ export function PlansSection({ plans, whatsappNumber }: PlansSectionProps) {
     </section>
   );
 }
+

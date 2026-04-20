@@ -1,42 +1,39 @@
-"use client";
-
-import { useState } from "react";
-import { FaqItem } from "@/lib/types";
+﻿import { FaqItem } from "@/lib/types";
 
 type FaqAccordionProps = {
   faq: FaqItem[];
 };
 
-export function FaqAccordion({ faq }: FaqAccordionProps) {
-  const [openId, setOpenId] = useState<string | null>(faq[0]?.id ?? null);
+function ChevronIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
 
+export function FaqAccordion({ faq }: FaqAccordionProps) {
   return (
     <section id="faq" className="faq" aria-labelledby="faq-title">
       <div className="container">
-        <h2 id="faq-title">Preguntas frecuentes</h2>
+        <div className="section-heading">
+          <span className="section-tag">FAQ</span>
+          <h2 id="faq-title">Respuestas rapidas para empezar</h2>
+        </div>
         <div className="faq-list">
-          {faq.map((item) => {
-            const isOpen = openId === item.id;
-
-            return (
-              <article key={item.id} className="faq-item">
-                <h3>
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    aria-controls={`panel-${item.id}`}
-                    onClick={() => setOpenId(isOpen ? null : item.id)}
-                  >
-                    <span>{item.question}</span>
-                    <span className="faq-indicator" aria-hidden="true">{isOpen ? "-" : "+"}</span>
-                  </button>
-                </h3>
-                <div id={`panel-${item.id}`} hidden={!isOpen}>
-                  <p>{item.answer}</p>
-                </div>
-              </article>
-            );
-          })}
+          {faq.map((item, index) => (
+            <details key={item.id} className="faq-item" open={index === 0}>
+              <summary className="faq-trigger">
+                <span>{item.question}</span>
+                <span className="faq-icon">
+                  <ChevronIcon />
+                </span>
+              </summary>
+              <div className="faq-panel">
+                <p>{item.answer}</p>
+              </div>
+            </details>
+          ))}
         </div>
       </div>
     </section>
