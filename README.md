@@ -1,4 +1,4 @@
-﻿# Fizik Gym MVP
+﻿# Fizik Gym 
 
 MVP landing page + BFF built with Next.js App Router and TypeScript.
 
